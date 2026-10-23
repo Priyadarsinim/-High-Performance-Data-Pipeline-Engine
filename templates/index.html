@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>High-Performance Data Pipeline Engine</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <!-- Main Heading -->
+    <header>
+        <h1>High-Performance Data Pipeline Engine</h1>
+        <p>
+            Upload your CSV or Excel file to clean and process your data.
+        </p>
+    </header>
+
+    <!-- Upload Form -->
+    <main>
+        <form method="POST" enctype="multipart/form-data">
+
+            <label for="file">Select CSV or Excel file:</label>
+
+            <input
+                type="file"
+                id="file"
+                name="file"
+                accept=".csv,.xlsx"
+                required
+            >
+
+            <button type="submit">Process Dataset</button>
+
+        </form>
+
+        <!-- Success or Error Message -->
+        {% if message %}
+            <div class="message">
+                {{ message }}
+            </div>
+        {% endif %}
+
+        {% if result %}
+
+        <!-- Cleaned Dataset Preview -->
+        <section class="preview">
+
+            <h2>Cleaned Dataset Preview</h2>
+
+            <p>Here are the first five rows of your cleaned dataset.</p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            {% for column in result.columns %}
+                                <th>{{ column }}</th>
+                            {% endfor %}
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {% for row in result.preview %}
+                            <tr>
+                                {% for column in result.columns %}
+                                    <td>{{ row[column] }}</td>
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+        </section>
+
+        <!-- Processing Report -->
+        <section class="report">
+
+            <h2>Processing Report</h2>
+
+            <div class="stats">
+
+                <div class="stat-card">
+                    <h3>Original Rows</h3>
+                    <p>{{ result.report.original_rows }}</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Cleaned Rows</h3>
+                    <p>{{ result.report.cleaned_rows }}</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Duplicates Removed</h3>
+                    <p>{{ result.report.duplicates_removed }}</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Missing Values Before</h3>
+                    <p>{{ result.report.missing_values_before }}</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Missing Values After</h3>
+                    <p>{{ result.report.missing_values_after }}</p>
+                </div>
+
+                <div class="stat-card">
+                    <h3>Processing Time</h3>
+                    <p>{{ result.report.processing_time_seconds }} sec</p>
+                </div>
+
+            </div>
+
+            <!-- Download Buttons -->
+            <div class="download-section">
+
+                <h3>Download Your Files</h3>
+
+                <a href="{{ url_for('download_file', filename=result.filename) }}">
+                    Download Cleaned CSV
+                </a>
+
+                <a href="{{ url_for('download_file', filename=result.report_file) }}">
+                    Download JSON Report
+                </a>
+
+            </div>
+
+        </section>
+
+        {% endif %}
+
+    </main>
+
+    <footer>
+        <p>High-Performance Data Pipeline Engine | Python & Flask</p>
+    </footer>
+
+</body>
+</html>
