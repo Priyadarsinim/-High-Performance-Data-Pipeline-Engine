@@ -1,0 +1,361 @@
+
+
+/* ==============================
+   GENERAL PAGE DESIGN
+============================== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 35px 20px;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f3f6fc;
+    color: #1e293b;
+    line-height: 1.6;
+}
+
+/* ==============================
+   HEADINGS
+============================== */
+h1 {
+    text-align: center;
+    color: #2457c5;
+    font-size: 38px;
+    font-weight: 700;
+    margin: 10px 0;
+}
+
+h2 {
+    color: #1e40af;
+    font-size: 28px;
+    margin: 0 0 20px;
+}
+
+h3 {
+    color: #475569;
+}
+
+p {
+    line-height: 1.6;
+}
+
+/* Introductory text */
+body > p {
+    text-align: center;
+    color: #64748b;
+    font-size: 17px;
+    margin-bottom: 25px;
+}
+
+/* ==============================
+   UPLOAD FORM
+============================== */
+form {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 35px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    box-shadow: 0 10px 35px rgba(15, 23, 42, 0.08);
+}
+
+label {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 17px;
+    font-weight: 600;
+    color: #334155;
+}
+
+input[type="file"] {
+    display: block;
+    width: 100%;
+    margin: 15px 0 25px;
+    padding: 14px;
+    border: 2px dashed #cbd5e1;
+    border-radius: 10px;
+    background: #f8fafc;
+    color: #475569;
+}
+
+/* Upload / submit button */
+button,
+input[type="submit"] {
+    display: inline-block;
+    padding: 13px 25px;
+    border: none;
+    border-radius: 9px;
+    background: #2457c5;
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease,
+                transform 0.2s ease;
+}
+
+button:hover,
+input[type="submit"]:hover {
+    background: #1d4298;
+    transform: translateY(-2px);
+}
+
+/* ==============================
+   REPORT AND PREVIEW SECTIONS
+============================== */
+.report,
+.preview {
+    width: 100%;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 30px;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 18px;
+    box-shadow: 0 8px 30px rgba(15, 23, 42, 0.06);
+}
+
+/* ==============================
+   REPORT STATISTICS CARDS
+============================== */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(180px, 1fr)
+    );
+    gap: 18px;
+    margin: 25px 0;
+}
+
+.stat-card {
+    min-width: 0;
+    padding: 22px;
+    background: #f8faff;
+    border: 1px solid #dbeafe;
+    border-radius: 13px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+    transition: transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(36, 87, 197, 0.10);
+}
+
+.stat-card h3 {
+    margin: 0 0 12px;
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.stat-card p {
+    margin: 0;
+    color: #2457c5;
+    font-size: 27px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+/* ==============================
+   DATASET TABLE
+============================== */
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    font-size: 15px;
+}
+
+th,
+td {
+    padding: 13px 16px;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+    white-space: nowrap;
+}
+
+th {
+    background: #2457c5;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+tr:hover {
+    background: #eff6ff;
+}
+
+/* ==============================
+   DOWNLOAD LINKS
+============================== */
+a {
+    display: inline-block;
+    margin: 10px 12px 10px 0;
+    padding: 12px 20px;
+    border: 1px solid #dbeafe;
+    border-radius: 9px;
+    background: #e8efff;
+    color: #2457c5;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease,
+                transform 0.2s ease;
+}
+
+a:hover {
+    background: #d6e3ff;
+    transform: translateY(-2px);
+}
+
+/* ==============================
+   SUCCESS AND ERROR MESSAGES
+============================== */
+.success {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 15px 20px;
+    border-radius: 9px;
+    background: #dcfce7;
+    color: #166534;
+}
+
+.error {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 15px 20px;
+    border-radius: 9px;
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+/* ==============================
+   RESPONSIVE DESIGN
+============================== */
+@media (max-width: 768px) {
+    body {
+        padding: 22px 12px;
+    }
+
+    h1 {
+        font-size: 29px;
+    }
+
+    h2 {
+        font-size: 23px;
+    }
+
+    form,
+    .report,
+    .preview {
+        padding: 20px;
+    }
+
+    .stats {
+        grid-template-columns: repeat(
+            auto-fit,
+            minmax(140px, 1fr)
+        );
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+
+    .stat-card p {
+        font-size: 23px;
+    }
+
+    a {
+        margin-right: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 25px;
+    }
+
+    .stats {
+        grid-template-columns: 1fr;
+    }
+
+    form,
+    .report,
+    .preview {
+        padding: 16px;
+    }
+
+    button,
+    input[type="submit"] {
+        width: 100%;
+    }
+}
+
+/* Fix report and preview alignment */
+.report,
+.preview {
+    display: block;
+    width: 100%;
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 30px;
+    clear: both;
+    float: none;
+}
+
+/* Keep headings aligned */
+.report h2,
+.preview h2 {
+    text-align: left;
+    margin: 0 0 20px;
+}
+
+/* Arrange report cards properly */
+.stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    width: 100%;
+}
+
+/* Keep cards inside report */
+.stat-card {
+    width: 100%;
+    min-width: 0;
+}
+
+/* Keep download buttons together */
+.report a {
+    margin: 10px 12px 0 0;
+}
+
+/* Responsive layout */
+@media (max-width: 768px) {
+    .stats {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 480px) {
+    .stats {
+        grid-template-columns: 1fr;
+    }
+}
